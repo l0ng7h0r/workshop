@@ -1,0 +1,288 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    margin: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h1 {
+    position: absolute;
+    font-size: 4em;
+    margin-top: -700px;
+    text-transform: uppercase;
+    animation: rgbText 5s linear infinite;
+    text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes rgbText {
+    0% {
+        color: #ff0000;
+        text-shadow: 0 0 10px #ff0000;
+    }
+    20% {
+        color: #ff00ff;
+        text-shadow: 0 0 10px #ff00ff;
+    }
+    40% {
+        color: #0000ff;
+        text-shadow: 0 0 10px #0000ff;
+    }
+    60% {
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+    }
+    80% {
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00;
+    }
+    100% {
+        color: #ff0000;
+        text-shadow: 0 0 10px #ff0000;
+    }
+}
+.challenges-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+.challenge-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: #21213d;
+    padding: 50px;
+    border-radius: 8px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    animation: neonBorder 1.5s infinite alternate;
+    color: white;
+    transition: all 0.5s ease;
+    max-width: 200px;
+    max-height: 200px;
+}
+.challenge-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff00ff, #00ffcc);
+    border-radius: 10px;
+    z-index: -1;
+}
+.challenge-card.solved {
+    background-color: #4CAF50;
+    color: white;
+}
+.challenge-card h2 {
+    margin: 0;
+    font-size: 1.8em;
+}
+.checkmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: inherit;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.challenge-card.solved .checkmark {
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+.modal.show {
+    background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+.flag-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333;
+    border: 1px solid #00ffcc;
+    color: white;
+    border-radius: 4px;
+}
+.submit-btn {
+    background-color: #00ffcc;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.download-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+}
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+.notification.success {
+    background-color: #4CAF50;
+}
+.notification.error {
+    background-color: #f44336;
+}
+.notification.show {
+    transform: translateX(0);
+}
+@keyframes neonBorder {
+    from {
+        box-shadow: 0 0 10px #ff00ff,
+                   0 0 20px #ff00ff,
+                   0 0 30px #ff00ff;
+    }
+    to {
+        box-shadow: 0 0 20px #00ffcc,
+                   0 0 30px #00ffcc,
+                   0 0 40px #00ffcc;
+    }
+}
+
+
+/* background */
+.dot{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background: #001300;
+    flex-wrap: wrap;
+    overflow: hidden;
+    animation: changingCOlor 3s linear infinite;
+  }
+  @keyframes changingCOlor {
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+  span{
+    height: 40px;
+    width: 40px;
+    display: block;
+    position: relative;
+  }
+  span::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: #00ff0a;
+    pointer-events: none;
+    transition: 10s;
+    transform: scale(0.1);
+    box-shadow: 0 0 10px #00ff0a,
+                0 0 20px #00ff0a,
+                0 0 40px #00ff0a,
+                0 0 60px #00ff0a,
+                0 0 80px #00ff0a,
+                0 0 100px #00ff0a;
+  }
+  span:hover::before{
+    transform: scale(1);
+    transition: 0s;
+  }
+
+
+  .bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -750px;
+  }
+
+  .challenge-info {
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    color: #fff;
+    border-left: 4px solid #00ffcc;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 15% auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 600px;
+    animation: neonBorder 1.5s infinite alternate;
+    background: linear-gradient(45deg, #1d1d1d, #01003a);
+
+}
+
